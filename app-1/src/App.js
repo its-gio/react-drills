@@ -1,26 +1,29 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+  constructor() {
+    super();
+
+    this.state = {
+      text: "This be a test"
+    }
+
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  handleChange(e) {
+    this.setState({ text: e.target.value })
+  }
+
+  render() {
+    return (
+      <div className="App">
+        <input onChange={this.handleChange} value={this.state.text} type="text"/>
+        <h1>{this.state.text}</h1>
+      </div>
+    );
+  }
 }
 
 export default App;
